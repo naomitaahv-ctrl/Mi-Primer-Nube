@@ -1,0 +1,35 @@
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Monitor Cloud</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f9; padding: 50px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        h1 { color: #333; }
+        #precio { font-size: 24px; color: #2ecc71; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Precio del Bitcoin en la Nube</h1>
+        <p>Este dato se obtiene consultando una API externa en tiempo real:</p>
+        <div id="precio">Cargando...</div>
+    </div>
+
+    <script>
+        // Consultamos una API pública en la nube (CoinGecko)
+        fetch('https://coingecko.com')
+            .then(response => response.json())
+            .then(data => {
+                const usdPrice = data.bitcoin.usd;
+                document.getElementById('precio').innerText = $${usdPrice.toLocaleString()} USD;
+            })
+            .catch(error => {
+                document.getElementById('precio').innerText = "Error al conectar con la API";
+                console.error(error);
+            });
+    </script>
+</body>
+</html>
