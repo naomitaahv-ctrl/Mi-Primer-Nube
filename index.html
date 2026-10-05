@@ -1,35 +1,133 @@
-html
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Monitor Cloud</title>
+    <title>Mi Página Sanrio</title>
+
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f9; padding: 50px; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
-        h1 { color: #333; }
-        #precio { font-size: 24px; color: #2ecc71; font-weight: bold; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffeef7;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: inline-block;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #e85d9e;
+        }
+
+        h2 {
+            color: #ff8fbd;
+        }
+
+        #personaje {
+            font-size: 28px;
+            color: #e85d9e;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        #descripcion {
+            font-size: 18px;
+            color: #555;
+        }
+
+        button {
+            background: #ff8fbd;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #e85d9e;
+        }
     </style>
 </head>
+
 <body>
+
     <div class="card">
-        <h1>Precio del Bitcoin en la Nube</h1>
-        <p>Este dato se obtiene consultando una API externa en tiempo real:</p>
-        <div id="precio">Cargando...</div>
+
+        <h1> Mi Mundo Sanrio </h1>
+
+        <p>
+            Conoce algunos de los personajes más queridos de Sanrio.
+        </p>
+
+        <div id="personaje">Cargando...</div>
+
+        <div id="descripcion"></div>
+
+        <br>
+
+        <button onclick="mostrarPersonaje()">
+             Ver personaje
+        </button>
+
     </div>
 
+
     <script>
-        // Consultamos una API pública en la nube (CoinGecko)
-        fetch('https://coingecko.com')
-            .then(response => response.json())
-            .then(data => {
-                const usdPrice = data.bitcoin.usd;
-                document.getElementById('precio').innerText = $${usdPrice.toLocaleString()} USD;
-            })
-            .catch(error => {
-                document.getElementById('precio').innerText = "Error al conectar con la API";
-                console.error(error);
-            });
+
+        // Lista de personajes de Sanrio
+        const personajes = [
+            {
+                nombre: "Hello Kitty ",
+                descripcion: "Una gatita amigable que representa la amistad y la diversión."
+            },
+            {
+                nombre: "Cinnamoroll ",
+                descripcion: "Un adorable perrito blanco con largas orejas que puede volar."
+            },
+            {
+                nombre: "My Melody ",
+                descripcion: "Una conejita dulce que siempre lleva su característica capucha."
+            },
+            {
+                nombre: "Kuromi ",
+                descripcion: "Una chica traviesa y divertida con una personalidad muy especial."
+            },
+            {
+                nombre: "Pompompurin ",
+                descripcion: "Un perrito dorado amante del pudín y de pasar tiempo con sus amigos."
+            }
+        ];
+
+
+        function mostrarPersonaje() {
+
+            // Elegir un personaje al azar
+            const numero = Math.floor(Math.random() * personajes.length);
+
+            const personaje = personajes[numero];
+
+            document.getElementById("personaje").innerText =
+                personaje.nombre;
+
+            document.getElementById("descripcion").innerText =
+                personaje.descripcion;
+        }
+
+
+        // Mostrar un personaje al cargar la página
+        mostrarPersonaje();
+
     </script>
+
 </body>
 </html>
+```
