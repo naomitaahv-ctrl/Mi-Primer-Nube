@@ -3,57 +3,66 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Página Sanrio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sanrio World</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: #ffeef7;
-            padding: 50px;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 40px;
         }
 
         .card {
-            background: white;
+            background-color: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            display: inline-block;
             max-width: 500px;
+            margin: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
 
         h1 {
             color: #e85d9e;
+            font-size: 40px;
         }
 
         h2 {
             color: #ff8fbd;
         }
 
-        #personaje {
-            font-size: 28px;
-            color: #e85d9e;
-            font-weight: bold;
-            margin: 20px;
+        p {
+            color: #555;
+            font-size: 18px;
         }
 
-        #descripcion {
-            font-size: 18px;
-            color: #555;
+        #personaje {
+            font-size: 30px;
+            font-weight: bold;
+            color: #e85d9e;
+            margin: 25px;
         }
 
         button {
-            background: #ff8fbd;
+            background-color: #ff8fbd;
             color: white;
             border: none;
             padding: 12px 25px;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-size: 17px;
             cursor: pointer;
-            font-size: 16px;
         }
 
         button:hover {
-            background: #e85d9e;
+            background-color: #e85d9e;
+        }
+
+        .corazones {
+            color: #ff8fbd;
+            font-size: 25px;
         }
     </style>
 </head>
@@ -62,69 +71,78 @@
 
     <div class="card">
 
-        <h1> Mi Mundo Sanrio </h1>
+        <div class="corazones">
+            💗 🌸 💗 🌸 💗
+        </div>
+
+        <h1>Sanrio World</h1>
+
+        <h2>✨ Mis personajes favoritos ✨</h2>
 
         <p>
-            Conoce algunos de los personajes más queridos de Sanrio.
+            ¡Bienvenido a mi página de Sanrio!
         </p>
 
-        <div id="personaje">Cargando...</div>
+        <div id="personaje">
+            Hello Kitty 🎀
+        </div>
 
-        <div id="descripcion"></div>
+        <p id="descripcion">
+            Una de las personajes más conocidas y queridas de Sanrio.
+        </p>
 
-        <br>
-
-        <button onclick="mostrarPersonaje()">
-             Ver personaje
+        <button onclick="cambiarPersonaje()">
+            Ver otro personaje ✨
         </button>
+
+        <div class="corazones">
+            💗 🌸 💗 🌸 💗
+        </div>
 
     </div>
 
 
     <script>
 
-        // Lista de personajes de Sanrio
         const personajes = [
             {
-                nombre: "Hello Kitty ",
-                descripcion: "Una gatita amigable que representa la amistad y la diversión."
+                nombre: "Hello Kitty 🎀",
+                descripcion: "Una de las personajes más conocidas y queridas de Sanrio."
             },
             {
-                nombre: "Cinnamoroll ",
-                descripcion: "Un adorable perrito blanco con largas orejas que puede volar."
+                nombre: "Cinnamoroll ☁️",
+                descripcion: "Un adorable perrito blanco con largas orejas."
             },
             {
-                nombre: "My Melody ",
-                descripcion: "Una conejita dulce que siempre lleva su característica capucha."
+                nombre: "My Melody 🌸",
+                descripcion: "Una dulce conejita que usa una bonita capucha."
             },
             {
-                nombre: "Kuromi ",
-                descripcion: "Una chica traviesa y divertida con una personalidad muy especial."
+                nombre: "Kuromi 🖤",
+                descripcion: "Un personaje divertido, travieso y con mucha personalidad."
             },
             {
-                nombre: "Pompompurin ",
-                descripcion: "Un perrito dorado amante del pudín y de pasar tiempo con sus amigos."
+                nombre: "Pompompurin 🍮",
+                descripcion: "Un perrito amarillo al que le encanta el pudín."
             }
         ];
 
+        let numero = 0;
 
-        function mostrarPersonaje() {
+        function cambiarPersonaje() {
 
-            // Elegir un personaje al azar
-            const numero = Math.floor(Math.random() * personajes.length);
+            numero++;
 
-            const personaje = personajes[numero];
+            if (numero >= personajes.length) {
+                numero = 0;
+            }
 
             document.getElementById("personaje").innerText =
-                personaje.nombre;
+                personajes[numero].nombre;
 
             document.getElementById("descripcion").innerText =
-                personaje.descripcion;
+                personajes[numero].descripcion;
         }
-
-
-        // Mostrar un personaje al cargar la página
-        mostrarPersonaje();
 
     </script>
 
